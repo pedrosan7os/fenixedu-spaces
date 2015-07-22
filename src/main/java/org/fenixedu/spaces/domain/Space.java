@@ -28,7 +28,6 @@ import java.util.stream.Stream;
 import org.fenixedu.bennu.core.domain.Bennu;
 import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.core.groups.Group;
-import org.fenixedu.bennu.core.groups.NobodyGroup;
 import org.fenixedu.spaces.domain.occupation.Occupation;
 import org.fenixedu.spaces.ui.InformationBean;
 import org.joda.time.DateTime;
@@ -355,7 +354,7 @@ public final class Space extends Space_Base implements Comparable<Space> {
     public Group getManagementGroupWithChainOfResponsability() {
         Group accessGroup = getManagementGroup();
         if (accessGroup == null) {
-            accessGroup = NobodyGroup.get();
+            accessGroup = Group.nobody();
         }
         final Space surroundingSpace = getParent();
         if (surroundingSpace != null) {
@@ -371,7 +370,7 @@ public final class Space extends Space_Base implements Comparable<Space> {
     public Group getOccupationsGroupWithChainOfResponsability() {
         Group accessGroup = getOccupationsGroup();
         if (accessGroup == null) {
-            accessGroup = NobodyGroup.get();
+            accessGroup = Group.nobody();
         }
         final Space surroundingSpace = getParent();
         if (surroundingSpace != null) {
